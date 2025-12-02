@@ -3,6 +3,11 @@ import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import logo from "@/assets/Autocolant-Dark.svg";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -73,260 +78,102 @@ const Register = () => {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-      }}
-    >
-      <div
-        style={{
-          background: "white",
-          borderRadius: "16px",
-          padding: "40px",
-          maxWidth: "450px",
-          width: "100%",
-          boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
-        }}
-      >
-        {/* Logo / Titre */}
-        <div style={{ textAlign: "center", marginBottom: "30px" }}>
-          <h1
-            style={{
-              fontSize: "28px",
-              fontWeight: "bold",
-              color: "#333",
-              marginBottom: "8px",
-            }}
-          >
-            {getTitle()}
-          </h1>
-          <p
-            style={{
-              color: "#666",
-              fontSize: "14px",
-            }}
-          >
-            {getSubtitle()}
-          </p>
-        </div>
-
-        {/* Formulaire */}
-        <form onSubmit={handleRegister}>
-          <div style={{ marginBottom: "20px" }}>
-            <label
-              style={{
-                display: "block",
-                marginBottom: "8px",
-                color: "#333",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
-              Nom complet
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Votre nom"
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                fontSize: "16px",
-                boxSizing: "border-box",
-                transition: "border-color 0.3s",
-              }}
-              onFocus={(e) => (e.currentTarget.style.borderColor = "#667eea")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
-            />
+    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
+      <Card className="w-full max-w-md shadow-elegant animate-slide-up">
+        <CardHeader className="text-center space-y-2">
+          <div className="flex justify-center mb-4">
+            <img src={logo} alt="Secretar.IA Logo" className="h-12 w-auto" />
           </div>
-
-          <div style={{ marginBottom: "20px" }}>
-            <label
-              style={{
-                display: "block",
-                marginBottom: "8px",
-                color: "#333",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="votre@email.com"
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                fontSize: "16px",
-                boxSizing: "border-box",
-                transition: "border-color 0.3s",
-              }}
-              onFocus={(e) => (e.currentTarget.style.borderColor = "#667eea")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
-            />
-          </div>
-
-          <div style={{ marginBottom: "20px" }}>
-            <label
-              style={{
-                display: "block",
-                marginBottom: "8px",
-                color: "#333",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
-              Mot de passe
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                fontSize: "16px",
-                boxSizing: "border-box",
-                transition: "border-color 0.3s",
-              }}
-              onFocus={(e) => (e.currentTarget.style.borderColor = "#667eea")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
-            />
-          </div>
-
-          <div style={{ marginBottom: "24px" }}>
-            <label
-              style={{
-                display: "block",
-                marginBottom: "8px",
-                color: "#333",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
-              Confirmer le mot de passe
-            </label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="••••••••"
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                fontSize: "16px",
-                boxSizing: "border-box",
-                transition: "border-color 0.3s",
-              }}
-              onFocus={(e) => (e.currentTarget.style.borderColor = "#667eea")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
-            />
-          </div>
-
-          {error && (
-            <div
-              style={{
-                background: "#fee",
-                color: "#c33",
-                padding: "12px",
-                borderRadius: "8px",
-                marginBottom: "20px",
-                fontSize: "14px",
-              }}
-            >
-              {error}
+          <CardTitle className="text-2xl font-bold">{getTitle()}</CardTitle>
+          <CardDescription>{getSubtitle()}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleRegister} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Nom complet</Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="Votre nom"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </div>
-          )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              width: "100%",
-              padding: "14px",
-              background: loading
-                ? "#ccc"
-                : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "16px",
-              fontWeight: "600",
-              cursor: loading ? "not-allowed" : "pointer",
-              transition: "all 0.3s",
-              boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
-            }}
-            onMouseEnter={(e) => {
-              if (!loading) {
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow =
-                  "0 6px 20px rgba(102, 126, 234, 0.5)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!loading) {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 15px rgba(102, 126, 234, 0.4)";
-              }
-            }}
-          >
-            {loading ? "Inscription..." : "Créer mon compte"}
-          </button>
-        </form>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="votre@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
 
-        {/* Liens */}
-        <div style={{ marginTop: "24px", textAlign: "center" }}>
-          <p style={{ color: "#666", fontSize: "14px", marginBottom: "12px" }}>
-            Déjà un compte ?{" "}
-            <Link
-              to={`/login${type ? `?type=${type}` : ""}`}
-              style={{
-                color: "#667eea",
-                textDecoration: "none",
-                fontWeight: "500",
-              }}
+            <div className="space-y-2">
+              <Label htmlFor="password">Mot de passe</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirmer le mot de passe</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                placeholder="••••••••"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            {error && (
+              <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md border border-destructive/20">
+                {error}
+              </div>
+            )}
+
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full"
+              size="lg"
             >
-              Se connecter
+              {loading ? "Inscription..." : "Créer mon compte"}
+            </Button>
+          </form>
+
+          <div className="mt-6 text-center space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Déjà un compte ?{" "}
+              <Link
+                to={`/login${type ? `?type=${type}` : ""}`}
+                className="text-primary font-medium hover:underline"
+              >
+                Se connecter
+              </Link>
+            </p>
+            <Link
+              to="/"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors inline-block"
+            >
+              ← Retour à l'accueil
             </Link>
-          </p>
-          <Link
-            to="/"
-            style={{
-              color: "#667eea",
-              textDecoration: "none",
-              fontSize: "14px",
-            }}
-          >
-            ← Retour à l'accueil
-          </Link>
-        </div>
-      </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
 
 export default Register;
-
