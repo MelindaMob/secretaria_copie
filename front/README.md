@@ -71,3 +71,37 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Configuration des variables d'environnement
+
+### URLs du projet
+
+- **Frontend (React)** : `secretar-ia.fr`
+- **Backend API (Next.js)** : `api.secretar-ia.fr` (déployé sur Vercel)
+
+### Configuration de l'API
+
+L'URL de base de l'API est configurée automatiquement selon l'environnement :
+
+- **Production** : `https://api.secretar-ia.fr` (détecté automatiquement)
+- **Développement local** : `http://localhost:3001` (par défaut)
+
+### Variables d'environnement
+
+Pour personnaliser l'URL de l'API, créez un fichier `.env.local` à la racine du dossier `front/` :
+
+```env
+# Pour le développement local
+VITE_API_BASE_URL=http://localhost:3001
+
+# Pour la production (si nécessaire)
+# VITE_API_BASE_URL=https://api.secretar-ia.fr
+```
+
+**Note** : Les fichiers `.env.local` sont ignorés par Git (voir `.gitignore`).
+
+### Déploiement
+
+Lors du déploiement en production, assurez-vous que la variable d'environnement `VITE_API_BASE_URL` est définie à `https://api.secretar-ia.fr` dans votre plateforme de déploiement (Vercel, Netlify, etc.).
+
+Si la variable n'est pas définie, le code utilisera automatiquement `https://api.secretar-ia.fr` en mode production.

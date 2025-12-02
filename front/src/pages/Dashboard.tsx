@@ -100,15 +100,15 @@ const Dashboard = () => {
     if (!airtableId) return;
 
     try {
+      const apiUrl = `${API_BASE_URL}/api/factures-restaurant?airtableId=${airtableId}`;
       console.log(
         "Appel API factures restaurant avec airtableId =",
         airtableId
       );
+      console.log("URL API complète:", apiUrl);
 
       // --- POINT DE CONCATENATION CORRECT ---
-      const res = await fetch(
-        `${API_BASE_URL}/api/factures-restaurant?airtableId=${airtableId}`
-      );
+      const res = await fetch(apiUrl);
       // ------------------------------------
       const data = await res.json();
 
@@ -137,15 +137,15 @@ const Dashboard = () => {
     if (!airtableId) return;
 
     try {
+      const apiUrl = `${API_BASE_URL}/api/commissions-commercial?airtableId=${airtableId}`;
       console.log(
         "Appel API commissions commercial avec airtableId =",
         airtableId
       );
+      console.log("URL API complète:", apiUrl);
 
       // --- POINT DE CONCATENATION CORRECT ---
-      const res = await fetch(
-        `${API_BASE_URL}/api/commissions-commercial?airtableId=${airtableId}`
-      );
+      const res = await fetch(apiUrl);
       // ------------------------------------
       const data = await res.json();
 
