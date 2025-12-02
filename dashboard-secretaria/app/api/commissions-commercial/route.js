@@ -2,17 +2,30 @@
 import { NextResponse } from "next/server";
 
 // Headers CORS pour autoriser les requêtes depuis le front React
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "http://localhost:8080",
-  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+const getCorsHeaders = (origin) => {
+  const allowedOrigins = [
+    "http://localhost:8080",
+    "https://secretar-ia.fr",
+    "https://www.secretar-ia.fr",
+  ];
+  
+  const isAllowed = !origin || allowedOrigins.some(allowed => origin.includes(allowed.replace(/^https?:\/\//, '')));
+  
+  return {
+    "Access-Control-Allow-Origin": isAllowed && origin ? origin : allowedOrigins[0],
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  };
 };
 
-export async function OPTIONS() {
-  return NextResponse.json({}, { headers: corsHeaders });
+export async function OPTIONS(request) {
+  const origin = request.headers.get("origin");
+  return NextResponse.json({}, { headers: getCorsHeaders(origin) });
 }
 
 export async function GET(request) {
+  const origin = request.headers.get("origin");
+  const corsHeaders = getCorsHeaders(origin);
   const { searchParams } = new URL(request.url);
   const airtableId = searchParams.get("airtableId");
 
