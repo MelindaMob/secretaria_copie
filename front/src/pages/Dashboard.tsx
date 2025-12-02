@@ -10,7 +10,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
-import { API_BASE_URL } from "@/config";
+import { API_BASE_URL } from "@/config"; // Reste correct
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -105,9 +105,11 @@ const Dashboard = () => {
         airtableId
       );
 
+      // --- POINT DE CONCATENATION CORRECT ---
       const res = await fetch(
         `${API_BASE_URL}/api/factures-restaurant?airtableId=${airtableId}`
       );
+      // ------------------------------------
       const data = await res.json();
 
       console.log("Réponse API factures:", data);
@@ -140,9 +142,11 @@ const Dashboard = () => {
         airtableId
       );
 
+      // --- POINT DE CONCATENATION CORRECT ---
       const res = await fetch(
         `${API_BASE_URL}/api/commissions-commercial?airtableId=${airtableId}`
       );
+      // ------------------------------------
       const data = await res.json();
 
       console.log("Réponse API commissions:", data);
@@ -238,150 +242,149 @@ const Dashboard = () => {
           </button>
         </div>
 
-      {/* ================== VUE COMMERCIAL ================== */}
-      {role === "commercial" && (
-        <div className="mt-8">
-          <div className="bg-primary/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-primary-foreground/10 shadow-elegant">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
-              <span className="text-accent">💼</span>
-              Commissions mensuelles
-            </h2>
+        {/* ================== VUE COMMERCIAL ================== */}
+        {role === "commercial" && (
+          <div className="mt-8">
+            <div className="bg-primary/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-primary-foreground/10 shadow-elegant">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+                <span className="text-accent">💼</span>
+                Commissions mensuelles
+              </h2>
 
-            {commissionsError && (
-              <div className="bg-destructive/20 border border-destructive text-destructive-foreground px-4 py-3 rounded-lg mb-4">
-                ⚠️ Erreur : {commissionsError}
-              </div>
-            )}
+              {commissionsError && (
+                <div className="bg-destructive/20 border border-destructive text-destructive-foreground px-4 py-3 rounded-lg mb-4">
+                  ⚠️ Erreur : {commissionsError}
+                </div>
+              )}
 
-            {!commissionsError && commissions.length === 0 && (
-              <div className="text-center py-12 text-primary-foreground/60">
-                <p className="text-lg">Aucune commission trouvée pour ce commercial.</p>
-              </div>
-            )}
+              {!commissionsError && commissions.length === 0 && (
+                <div className="text-center py-12 text-primary-foreground/60">
+                  <p className="text-lg">Aucune commission trouvée pour ce commercial.</p>
+                </div>
+              )}
 
-            {commissions.length > 0 && (
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="border-b-2 border-primary-foreground/20">
-                      <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
-                        Mois
-                      </th>
-                      <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
-                        Total du mois
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {commissions.map((c, index) => (
-                      <tr 
-                        key={c.id}
-                        className={`border-b border-primary-foreground/10 hover:bg-primary-foreground/5 transition-colors ${
-                          index % 2 === 0 ? 'bg-primary-foreground/5' : ''
-                        }`}
-                      >
-                        <td className="py-4 px-4">
-                          {c.moisLisible || c.MoisLisible || c.Mois || "-"}
-                        </td>
-                        <td className="py-4 px-4 font-semibold text-accent">
-                          {c.totalMois !== null && c.totalMois !== undefined
-                            ? `€${parseFloat(c.totalMois.toString()).toFixed(2)}`
-                            : c["Total du mois"]
-                            ? `€${parseFloat(c["Total du mois"].toString()).toFixed(2)}`
-                            : "-"}
-                        </td>
+              {commissions.length > 0 && (
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="border-b-2 border-primary-foreground/20">
+                        <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
+                          Mois
+                        </th>
+                        <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
+                          Total du mois
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+                    </thead>
+                    <tbody>
+                      {commissions.map((c, index) => (
+                        <tr 
+                          key={c.id}
+                          className={`border-b border-primary-foreground/10 hover:bg-primary-foreground/5 transition-colors ${
+                            index % 2 === 0 ? 'bg-primary-foreground/5' : ''
+                          }`}
+                        >
+                          <td className="py-4 px-4">
+                            {c.moisLisible || c.MoisLisible || c.Mois || "-"}
+                          </td>
+                          <td className="py-4 px-4 font-semibold text-accent">
+                            {c.totalMois !== null && c.totalMois !== undefined
+                              ? `€${parseFloat(c.totalMois.toString()).toFixed(2)}`
+                              : c["Total du mois"]
+                              ? `€${parseFloat(c["Total du mois"].toString()).toFixed(2)}`
+                              : "-"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* ================== VUE RESTAURANT ================== */}
-      {role === "restaurant" && (
-        <div className="mt-8">
-          <div className="bg-primary/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-primary-foreground/10 shadow-elegant">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
-              <span className="text-accent">🏪</span>
-              Factures
-            </h2>
+        {/* ================== VUE RESTAURANT ================== */}
+        {role === "restaurant" && (
+          <div className="mt-8">
+            <div className="bg-primary/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-primary-foreground/10 shadow-elegant">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+                <span className="text-accent">🏪</span>
+                Factures
+              </h2>
 
-            {facturesError && (
-              <div className="bg-destructive/20 border border-destructive text-destructive-foreground px-4 py-3 rounded-lg mb-4">
-                ⚠️ Erreur : {facturesError}
-              </div>
-            )}
+              {facturesError && (
+                <div className="bg-destructive/20 border border-destructive text-destructive-foreground px-4 py-3 rounded-lg mb-4">
+                  ⚠️ Erreur : {facturesError}
+                </div>
+              )}
 
-            {!facturesError && factures.length === 0 && (
-              <div className="text-center py-12 text-primary-foreground/60">
-                <p className="text-lg">Aucune facture trouvée pour ce restaurant.</p>
-              </div>
-            )}
+              {!facturesError && factures.length === 0 && (
+                <div className="text-center py-12 text-primary-foreground/60">
+                  <p className="text-lg">Aucune facture trouvée pour ce restaurant.</p>
+                </div>
+              )}
 
-            {factures.length > 0 && (
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="border-b-2 border-primary-foreground/20">
-                      <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
-                        Date de génération
-                      </th>
-                      <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
-                        Montant total
-                      </th>
-                      <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
-                        PDF
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {factures.map((f, index) => (
-                      <tr 
-                        key={f.id}
-                        className={`border-b border-primary-foreground/10 hover:bg-primary-foreground/5 transition-colors ${
-                          index % 2 === 0 ? 'bg-primary-foreground/5' : ''
-                        }`}
-                      >
-                        <td className="py-4 px-4">
-                          {f["Date de génération"] ||
-                            f["Date de generation"] ||
-                            "-"}
-                        </td>
-                        <td className="py-4 px-4 font-semibold text-accent">
-                          {f["Montant total"]
-                            ? `€${parseFloat(f["Montant total"].toString()).toFixed(2)}`
-                            : "-"}
-                        </td>
-                        <td className="py-4 px-4">
-                          {f.PDF ? (
-                            <a
-                              href={f.PDF}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-accent hover:text-accent/80 underline transition-colors font-medium"
-                            >
-                              📄 Télécharger PDF
-                            </a>
-                          ) : (
-                            <span className="text-primary-foreground/40">-</span>
-                          )}
-                        </td>
+              {factures.length > 0 && (
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="border-b-2 border-primary-foreground/20">
+                        <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
+                          Date de génération
+                        </th>
+                        <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
+                          Montant total
+                        </th>
+                        <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
+                          PDF
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+                    </thead>
+                    <tbody>
+                      {factures.map((f, index) => (
+                        <tr 
+                          key={f.id}
+                          className={`border-b border-primary-foreground/10 hover:bg-primary-foreground/5 transition-colors ${
+                            index % 2 === 0 ? 'bg-primary-foreground/5' : ''
+                          }`}
+                        >
+                          <td className="py-4 px-4">
+                            {f["Date de génération"] ||
+                              f["Date de generation"] ||
+                              "-"}
+                          </td>
+                          <td className="py-4 px-4 font-semibold text-accent">
+                            {f["Montant total"]
+                              ? `€${parseFloat(f["Montant total"].toString()).toFixed(2)}`
+                              : "-"}
+                          </td>
+                          <td className="py-4 px-4">
+                            {f.PDF ? (
+                              <a
+                                href={f.PDF}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-accent hover:text-accent/80 underline transition-colors font-medium"
+                              >
+                                📄 Télécharger PDF
+                              </a>
+                            ) : (
+                              <span className="text-primary-foreground/40">-</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </div>
   );
 };
 
 export default Dashboard;
-
