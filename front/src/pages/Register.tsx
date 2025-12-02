@@ -1,41 +1,75 @@
 import { useState } from "react";
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "@/lib/firebase";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const type = searchParams.get("type") || "";
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    // Validation
+    if (password !== confirmPassword) {
+      setError("Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Le mot de passe doit contenir au moins 6 caractères");
+      return;
+    }
+
     setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Créer le document utilisateur dans Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        email: user.email,
+        nom: name,
+        role: type || "restaurant",
+        createdAt: new Date().toISOString(),
+      });
+
       navigate("/dashboard");
-    } catch (err) {
-      setError("Identifiants incorrects");
+    } catch (err: any) {
+      console.error("Erreur inscription:", err);
+      if (err.code === "auth/email-already-in-use") {
+        setError("Cet email est déjà utilisé");
+      } else if (err.code === "auth/weak-password") {
+        setError("Le mot de passe est trop faible");
+      } else if (err.code === "auth/invalid-email") {
+        setError("Email invalide");
+      } else {
+        setError("Une erreur est survenue lors de l'inscription");
+      }
       setLoading(false);
     }
   };
 
   const getTitle = () => {
-    if (type === "restaurant") return "Espace Client - Restaurants";
-    if (type === "commercial") return "Espace Commercial";
-    return "Connexion";
+    if (type === "restaurant") return "Créer un compte - Restaurants";
+    if (type === "commercial") return "Créer un compte - Commerciaux";
+    return "Créer un compte";
   };
 
   const getSubtitle = () => {
-    if (type === "restaurant") return "Accédez à vos factures et documents";
-    if (type === "commercial") return "Consultez vos commissions mensuelles";
-    return "Connectez-vous à votre compte";
+    if (type === "restaurant") return "Rejoignez-nous pour gérer vos factures";
+    if (type === "commercial") return "Rejoignez-nous pour suivre vos commissions";
+    return "Créez votre compte pour commencer";
   };
 
   return (
@@ -82,7 +116,39 @@ const Login = () => {
         </div>
 
         {/* Formulaire */}
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleRegister}>
+          <div style={{ marginBottom: "20px" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "8px",
+                color: "#333",
+                fontSize: "14px",
+                fontWeight: "500",
+              }}
+            >
+              Nom complet
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Votre nom"
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                fontSize: "16px",
+                boxSizing: "border-box",
+                transition: "border-color 0.3s",
+              }}
+              onFocus={(e) => (e.currentTarget.style.borderColor = "#667eea")}
+              onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
+            />
+          </div>
+
           <div style={{ marginBottom: "20px" }}>
             <label
               style={{
@@ -115,7 +181,7 @@ const Login = () => {
             />
           </div>
 
-          <div style={{ marginBottom: "24px" }}>
+          <div style={{ marginBottom: "20px" }}>
             <label
               style={{
                 display: "block",
@@ -131,6 +197,38 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                fontSize: "16px",
+                boxSizing: "border-box",
+                transition: "border-color 0.3s",
+              }}
+              onFocus={(e) => (e.currentTarget.style.borderColor = "#667eea")}
+              onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
+            />
+          </div>
+
+          <div style={{ marginBottom: "24px" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "8px",
+                color: "#333",
+                fontSize: "14px",
+                fontWeight: "500",
+              }}
+            >
+              Confirmer le mot de passe
+            </label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="••••••••"
               required
               style={{
@@ -195,23 +293,23 @@ const Login = () => {
               }
             }}
           >
-            {loading ? "Connexion..." : "Se connecter"}
+            {loading ? "Inscription..." : "Créer mon compte"}
           </button>
         </form>
 
         {/* Liens */}
         <div style={{ marginTop: "24px", textAlign: "center" }}>
           <p style={{ color: "#666", fontSize: "14px", marginBottom: "12px" }}>
-            Pas encore de compte ?{" "}
+            Déjà un compte ?{" "}
             <Link
-              to={`/register${type ? `?type=${type}` : ""}`}
+              to={`/login${type ? `?type=${type}` : ""}`}
               style={{
                 color: "#667eea",
                 textDecoration: "none",
                 fontWeight: "500",
               }}
             >
-              Créer un compte
+              Se connecter
             </Link>
           </p>
           <Link
@@ -230,5 +328,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
 
