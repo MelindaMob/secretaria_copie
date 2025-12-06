@@ -71,7 +71,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
               <MessageCircle className="h-5 w-5 text-accent" />
-              <span className="text-primary-foreground">Service 24/7</span>
+              <span className="text-primary-foreground">Service 24h/24h et 7j/7</span>
             </div>
           </div>
         </div>

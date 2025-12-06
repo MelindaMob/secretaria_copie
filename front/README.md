@@ -1,76 +1,53 @@
-# Welcome to your Lovable project
+# Secretar.IA - Frontend
 
-## Project info
+Application React pour Secretar.IA, agent IA téléphonique pour restaurants.
 
-**URL**: https://lovable.dev/projects/b56ee65f-0f83-4ad9-b407-2803f9bb5039
+## Installation
 
-## How can I edit this code?
+La seule exigence est d'avoir Node.js & npm installés - [installer avec nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/b56ee65f-0f83-4ad9-b407-2803f9bb5039) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Suivez ces étapes :
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Étape 1 : Cloner le repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Étape 2 : Naviguer vers le dossier du projet
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Étape 3 : Installer les dépendances
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Étape 4 : Démarrer le serveur de développement
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Technologies utilisées
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+Ce projet est construit avec :
 
 - Vite
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
+- React Router
+- Firebase (Auth & Firestore)
 
-## How can I deploy this project?
+## Déploiement
 
-Simply open [Lovable](https://lovable.dev/projects/b56ee65f-0f83-4ad9-b407-2803f9bb5039) and click on Share -> Publish.
+Le projet peut être déployé sur Vercel, Netlify ou toute autre plateforme supportant les applications React.
 
-## Can I connect a custom domain to my Lovable project?
+Pour déployer sur Vercel :
 
-Yes, you can!
+```sh
+npm run build
+vercel --prod
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Domaine personnalisé
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Le projet est configuré pour fonctionner avec le domaine `secretar-ia.fr`.
 
 ## Configuration des variables d'environnement
 
