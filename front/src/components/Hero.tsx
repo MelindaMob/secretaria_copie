@@ -26,7 +26,7 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-2xl animate-slide-up">
-            Votre agent IA disponible 24/7 pour répondre aux appels, gérer vos réservations et améliorer l'expérience client de votre restaurant
+            Votre agent IA disponible 24h/24h et 7j/7 pour répondre aux appels, gérer vos réservations et améliorer l'expérience client de votre restaurant
           </p>
 
           {/* CTA Buttons */}
