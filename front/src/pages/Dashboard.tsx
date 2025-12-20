@@ -27,6 +27,9 @@ const Dashboard = () => {
   // --- état "données commercial" ---
   const [commissions, setCommissions] = useState<any[]>([]);
   const [commissionsError, setCommissionsError] = useState("");
+  // --- état "factures commercial" ---
+  const [facturesCommercial, setFacturesCommercial] = useState<any[]>([]);
+  const [facturesCommercialError, setFacturesCommercialError] = useState("");
 
   // =============================
   // 1) écoute Firebase Auth + Firestore /users
@@ -131,7 +134,7 @@ const Dashboard = () => {
   }
 
   // =============================
-  // 3) Fetch commissions (commercial)
+  // 3) Fetch commissions (commercial) - garder pour compatibilité si nécessaire
   // =============================
   async function fetchCommissions() {
     if (!airtableId) return;
@@ -167,7 +170,42 @@ const Dashboard = () => {
   }
 
   // =============================
-  // 4) Quand role + airtableId sont connus, on charge les données
+  // 4) Fetch factures commercial (nouveau)
+  // =============================
+  async function fetchFacturesCommercial() {
+    if (!airtableId) return;
+
+    try {
+      const apiUrl = `${API_BASE_URL}/api/factures-commercial?airtableId=${airtableId}`;
+      console.log(
+        "Appel API factures commercial avec airtableId =",
+        airtableId
+      );
+      console.log("URL API complète:", apiUrl);
+
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+
+      console.log("Réponse API factures commercial:", data);
+
+      if (!res.ok) {
+        setFacturesCommercialError(data.error || "Erreur Airtable");
+        setFacturesCommercial([]);
+        return;
+      }
+
+      setFacturesCommercialError("");
+      const facturesData = data.records || data.factures || [];
+      setFacturesCommercial(facturesData);
+    } catch (err) {
+      console.error("Erreur API factures commercial:", err);
+      setFacturesCommercialError("Erreur réseau lors de l'appel à l'API");
+      setFacturesCommercial([]);
+    }
+  }
+
+  // =============================
+  // 5) Quand role + airtableId sont connus, on charge les données
   // =============================
   useEffect(() => {
     if (!airtableId || !role) return;
@@ -175,7 +213,8 @@ const Dashboard = () => {
     if (role === "restaurant") {
       fetchFactures();
     } else if (role === "commercial") {
-      fetchCommissions();
+      // Utiliser fetchFacturesCommercial au lieu de fetchCommissions
+      fetchFacturesCommercial();
     }
   }, [airtableId, role]);
 
@@ -248,22 +287,22 @@ const Dashboard = () => {
             <div className="bg-primary/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-primary-foreground/10 shadow-elegant">
               <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
                 <span className="text-accent">💼</span>
-                Commissions mensuelles
+                Factures Commerciaux
               </h2>
 
-              {commissionsError && (
+              {facturesCommercialError && (
                 <div className="bg-destructive/20 border border-destructive text-destructive-foreground px-4 py-3 rounded-lg mb-4">
-                  ⚠️ Erreur : {commissionsError}
+                  ⚠️ Erreur : {facturesCommercialError}
                 </div>
               )}
 
-              {!commissionsError && commissions.length === 0 && (
+              {!facturesCommercialError && facturesCommercial.length === 0 && (
                 <div className="text-center py-12 text-primary-foreground/60">
-                  <p className="text-lg">Aucune commission trouvée pour ce commercial.</p>
+                  <p className="text-lg">Aucune facture trouvée pour ce commercial.</p>
                 </div>
               )}
 
-              {commissions.length > 0 && (
+              {facturesCommercial.length > 0 && (
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
@@ -272,27 +311,34 @@ const Dashboard = () => {
                           Mois
                         </th>
                         <th className="text-left py-4 px-4 font-semibold text-primary-foreground">
-                          Total du mois
+                          PDF
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {commissions.map((c, index) => (
+                      {facturesCommercial.map((f, index) => (
                         <tr 
-                          key={c.id}
+                          key={f.id}
                           className={`border-b border-primary-foreground/10 hover:bg-primary-foreground/5 transition-colors ${
                             index % 2 === 0 ? 'bg-primary-foreground/5' : ''
                           }`}
                         >
                           <td className="py-4 px-4">
-                            {c.moisLisible || c.MoisLisible || c.Mois || "-"}
+                            {f["Mois"] || f["Mois lisible"] || "-"}
                           </td>
-                          <td className="py-4 px-4 font-semibold text-accent">
-                            {c.totalMois !== null && c.totalMois !== undefined
-                              ? `€${parseFloat(c.totalMois.toString()).toFixed(2)}`
-                              : c["Total du mois"]
-                              ? `€${parseFloat(c["Total du mois"].toString()).toFixed(2)}`
-                              : "-"}
+                          <td className="py-4 px-4">
+                            {f.PDF ? (
+                              <a
+                                href={f.PDF}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-accent hover:text-accent/80 underline transition-colors font-medium"
+                              >
+                                📄 Télécharger PDF
+                              </a>
+                            ) : (
+                              <span className="text-primary-foreground/40">-</span>
+                            )}
                           </td>
                         </tr>
                       ))}
