@@ -9,7 +9,7 @@ const benefits = [
   },
   {
     icon: Clock,
-    title: "Disponible 24/7",
+    title: "Disponible 24h/24 et 7j/7",
     description: "Service continu, jour et nuit, week-ends et jours fériés sans exception",
   },
   {
