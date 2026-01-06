@@ -35,11 +35,13 @@ const getApiBaseUrl = () => {
 export const API_BASE_URL = getApiBaseUrl();
 export const DASHBOARD_URL = `${API_BASE_URL}`;
 
-// Log pour débogage (toujours actif pour vérifier en production aussi)
-console.log('🔧 Configuration API:', {
-  mode: import.meta.env.MODE,
-  apiBaseUrl: API_BASE_URL,
-  envVar: import.meta.env.VITE_API_BASE_URL || 'non définie',
-  isProd: import.meta.env.PROD,
-});
+// Log pour débogage (uniquement en développement)
+if (import.meta.env.DEV) {
+  console.log('🔧 Configuration API:', {
+    mode: import.meta.env.MODE,
+    apiBaseUrl: API_BASE_URL,
+    envVar: import.meta.env.VITE_API_BASE_URL || 'non définie',
+    isProd: import.meta.env.PROD,
+  });
+}
 
