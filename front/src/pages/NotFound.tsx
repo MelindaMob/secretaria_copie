@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home, AlertCircle } from "lucide-react";
 import logo from "@/assets/Autocolant-Dark.svg";
+import SEO from "@/components/SEO";
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
+    <>
+      <SEO
+        title="404 - Page introuvable - Secretar.IA"
+        description="La page que vous recherchez n'existe pas ou a été déplacée."
+        ogImage="https://secretar-ia.fr/og-image.png"
+      />
+      <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
       <div className="text-center space-y-8 animate-slide-up">
         {/* Logo */}
         <div className="flex justify-center mb-8">
@@ -72,6 +79,7 @@ const NotFound = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

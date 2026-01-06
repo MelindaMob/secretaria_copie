@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import logo from "@/assets/Autocolant-Dark.svg";
+import SEO from "@/components/SEO";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -44,7 +45,13 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
+    <>
+      <SEO
+        title={`${getTitle()} - Secretar.IA`}
+        description={getSubtitle()}
+        ogImage="https://secretar-ia.fr/og-image.png"
+      />
+      <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-elegant animate-slide-up">
         <CardHeader className="text-center space-y-2">
           <div className="flex justify-center mb-4">
@@ -115,6 +122,7 @@ const Login = () => {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 };
 
