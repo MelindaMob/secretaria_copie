@@ -57,3 +57,4 @@ const SEO = ({ title, description, ogImage }: SEOProps) => {
 
 export default SEO;
 
+
