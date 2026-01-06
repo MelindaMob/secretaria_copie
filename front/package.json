@@ -11,6 +11,21 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "reactSnap": {
+    "include": [
+      "/",
+      "/login",
+      "/register",
+      "/404"
+    ],
+    "skipThirdPartyRequests": true,
+    "cacheAjaxRequests": false,
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    }
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.11",
