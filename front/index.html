@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,7 @@
     <meta name="description" content="Ne ratez plus aucune réservation avec Secretar.IA. Notre agent IA répond aux appels, gère vos réservations 24h/24 et 7j/7 et améliore l'expérience client de votre restaurant." />
     <meta name="author" content="Secretar.IA" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://secretar-ia.fr" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,6 +15,7 @@
     <meta property="og:title" content="Secretar.IA - Agent IA Téléphonique pour Restaurants" />
     <meta property="og:description" content="Ne ratez plus aucune réservation avec Secretar.IA. Notre agent IA répond aux appels 24h/24 et 7j/7 et gère vos réservations automatiquement." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://secretar-ia.fr" />
     <meta property="og:image" content="https://secretar-ia.fr/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
@@ -25,7 +27,171 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Contenu statique pour le SEO - sera remplacé par React au chargement -->
+      <main class="min-h-screen">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+          <div class="container relative z-10 px-4 py-20 pt-32 md:pt-40">
+            <div class="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
+              <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight">
+                Secretar IA <br />
+                <span class="bg-gradient-accent bg-clip-text text-transparent">décroche toutes vos résas.</span>
+              </h1>
+              
+              <p class="text-xl md:text-2xl text-primary-foreground/80 max-w-2xl">
+                Votre agent IA disponible 24h/24h et 7j/7 pour répondre aux appels, gérer vos réservations et améliorer l'expérience client de votre restaurant
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#video" class="text-lg px-8 py-6 bg-accent text-accent-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                  Découvrir la vidéo
+                </a>
+                <a href="#formulaire" class="text-lg px-8 py-6 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                  Commencer
+                </a>
+              </div>
+
+              <div class="flex flex-wrap justify-center gap-4 pt-8">
+                <div class="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
+                  <span class="text-primary-foreground">📞 Réponse instantanée</span>
+                </div>
+                <div class="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
+                  <span class="text-primary-foreground">📅 Gestion automatique</span>
+                </div>
+                <div class="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
+                  <span class="text-primary-foreground">💬 Service 24h/24h et 7j/7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video" class="py-20 bg-gradient-subtle">
+          <div class="container px-4">
+            <div class="max-w-5xl mx-auto">
+              <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">
+                  Découvrez Secretar<span class="text-secondary">.IA</span> en action
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Voyez comment notre agent IA révolutionne la gestion des réservations pour les restaurants
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="py-20 bg-background">
+          <div class="container px-4">
+            <div class="text-center mb-16">
+              <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Pourquoi choisir Secretar<span class="text-secondary">.IA</span> ?
+              </h2>
+              <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Une solution complète qui transforme la gestion de vos réservations
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              <div class="p-6 border border-border bg-card rounded-lg">
+                <h3 class="text-xl font-semibold text-card-foreground mb-2">Zéro appel manqué</h3>
+                <p class="text-muted-foreground">Votre agent IA répond instantanément à chaque appel, même pendant les heures de pointe</p>
+              </div>
+              <div class="p-6 border border-border bg-card rounded-lg">
+                <h3 class="text-xl font-semibold text-card-foreground mb-2">Disponible 24h/24 et 7j/7</h3>
+                <p class="text-muted-foreground">Service continu, jour et nuit, week-ends et jours fériés sans exception</p>
+              </div>
+              <div class="p-6 border border-border bg-card rounded-lg">
+                <h3 class="text-xl font-semibold text-card-foreground mb-2">Augmentez vos réservations</h3>
+                <p class="text-muted-foreground">Convertissez plus d'appels en réservations grâce à une réponse immédiate et professionnelle</p>
+              </div>
+              <div class="p-6 border border-border bg-card rounded-lg">
+                <h3 class="text-xl font-semibold text-card-foreground mb-2">Expérience client optimale</h3>
+                <p class="text-muted-foreground">Un service courtois et efficace qui reflète l'excellence de votre établissement</p>
+              </div>
+              <div class="p-6 border border-border bg-card rounded-lg">
+                <h3 class="text-xl font-semibold text-card-foreground mb-2">Gestion intelligente</h3>
+                <p class="text-muted-foreground">Prise, modification et annulation de réservations en toute autonomie</p>
+              </div>
+              <div class="p-6 border border-border bg-card rounded-lg">
+                <h3 class="text-xl font-semibold text-card-foreground mb-2">Déploiement rapide</h3>
+                <p class="text-muted-foreground">Opérationnel en quelques jours, sans formation complexe de votre équipe</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-20 bg-gradient-subtle">
+          <div class="container px-4">
+            <div class="text-center mb-16">
+              <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Comment ça fonctionne ?
+              </h2>
+              <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Un processus simple et rapide pour transformer votre gestion des réservations
+              </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto space-y-12">
+              <div class="flex flex-col lg:flex-row gap-8 items-center">
+                <div class="flex-1">
+                  <div class="mb-4">
+                    <span class="text-6xl font-bold bg-gradient-accent bg-clip-text text-transparent">01</span>
+                  </div>
+                  <h3 class="text-2xl font-bold text-foreground mb-2">Remplissez le formulaire</h3>
+                  <p class="text-muted-foreground text-lg">Indiquez-nous vos informations, horaires d'ouverture, menu et spécificités</p>
+                </div>
+              </div>
+              <div class="flex flex-col lg:flex-row gap-8 items-center">
+                <div class="flex-1">
+                  <div class="mb-4">
+                    <span class="text-6xl font-bold bg-gradient-accent bg-clip-text text-transparent">02</span>
+                  </div>
+                  <h3 class="text-2xl font-bold text-foreground mb-2">Solution 100% personnalisée</h3>
+                  <p class="text-muted-foreground text-lg">Nous créons votre agent IA sur mesure adapté à votre restaurant</p>
+                </div>
+              </div>
+              <div class="flex flex-col lg:flex-row gap-8 items-center">
+                <div class="flex-1">
+                  <div class="mb-4">
+                    <span class="text-6xl font-bold bg-gradient-accent bg-clip-text text-transparent">03</span>
+                  </div>
+                  <h3 class="text-2xl font-bold text-foreground mb-2">Intégration clé en main</h3>
+                  <p class="text-muted-foreground text-lg">Nous intégrons la solution à votre système existant en toute simplicité</p>
+                </div>
+              </div>
+              <div class="flex flex-col lg:flex-row gap-8 items-center">
+                <div class="flex-1">
+                  <div class="mb-4">
+                    <span class="text-6xl font-bold bg-gradient-accent bg-clip-text text-transparent">04</span>
+                  </div>
+                  <h3 class="text-2xl font-bold text-foreground mb-2">Mise en service immédiate</h3>
+                  <p class="text-muted-foreground text-lg">Votre agent IA gère vos appels et réservations dès le premier jour</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="formulaire" class="py-20 bg-background">
+          <div class="container px-4">
+            <div class="text-center">
+              <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Commencez dès aujourd'hui
+              </h2>
+              <p class="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+                Rejoignez les restaurants qui font confiance à Secretar.IA pour gérer leurs réservations
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
