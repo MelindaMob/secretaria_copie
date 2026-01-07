@@ -2,7 +2,7 @@ const steps = [
   {
     number: "01",
     title: "Remplissez le formulaire",
-    description: "Indiquez-nous vos informations, horaires d'ouverture, menu et spécificités",
+    description: "Indiquez-nous vos informations, horaires d'ouverture, menus et spécificités",
   },
   {
     number: "02",
