@@ -1,7 +1,6 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/Logo.svg";
-import cguPdf from "@/assets/CGU SECRETARIA.pdf";
 
 const Footer = () => {
   return (
@@ -64,7 +63,7 @@ const Footer = () => {
               <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
                 À propos
               </a>
-              <a href={cguPdf} target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-accent transition-colors">
+              <a href="/CGU-SECRETARIA.pdf" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-accent transition-colors">
                 CGV
               </a>
               <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
