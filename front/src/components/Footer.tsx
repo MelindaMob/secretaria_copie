@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/Logo.svg";
+import cguPdf from "@/assets/CGU SECRETARIA.pdf";
 
 const Footer = () => {
   return (
@@ -24,15 +25,11 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4 text-accent" />
-                <a href="tel:+33684072774" className="hover:text-accent transition-colors">+33 6 84 07 27 74</a>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Phone className="w-4 h-4 text-accent" />
-                <a href="tel:+33652774261" className="hover:text-accent transition-colors">+33 6 52 77 42 61</a>
+                <span>+33 1 23 45 67 89</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4 text-accent" />
-                <a href="mailto:contact@secretar-ia.fr" className="hover:text-accent transition-colors">contact@secretar-ia.fr</a>
+                <span>contact@secretar-ia.fr</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4 text-accent" />
@@ -67,10 +64,7 @@ const Footer = () => {
               <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
                 À propos
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
-                Tarifs
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
+              <a href={cguPdf} target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-accent transition-colors">
                 CGV
               </a>
               <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
