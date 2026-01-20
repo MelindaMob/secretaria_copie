@@ -24,7 +24,11 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4 text-accent" />
-                <span>+33 1 23 45 67 89</span>
+                <span>+33 6 84 07 27 74</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Phone className="w-4 h-4 text-accent" />
+                <span>+33 6 52 77 42 61</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4 text-accent" />
@@ -32,7 +36,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4 text-accent" />
-                <span>Paris, France</span>
+                <span>Monplaisant</span>
               </div>
             </div>
           </div>
@@ -60,14 +64,8 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-3">Liens utiles</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
-                À propos
-              </a>
               <a href="/CGU-SECRETARIA.pdf" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-accent transition-colors">
                 CGV
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-accent transition-colors">
-                Confidentialité
               </a>
             </div>
           </div>
