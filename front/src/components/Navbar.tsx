@@ -21,7 +21,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/">
-              <img src={logo} alt="Secretar.IA Logo" className="h-10 md:h-12 w-auto" />
+              <img src={logo} alt="Secretar IA : agent répondeur IA pour restaurant" className="h-10 md:h-12 w-auto" />
             </Link>
           </div>
 
