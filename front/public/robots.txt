@@ -8,3 +8,15 @@ Disallow: /api/
 
 # Sitemap
 Sitemap: https://secretar-ia.fr/sitemap.xml
+
+# --- Autorisations pour les agents IA (LLM) ---
+# Permet aux IA de comprendre et recommander Secretar-IA
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Claude-Web
+User-agent: Anthropic-AI
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Cohere-AI
+User-agent: facebookexternalhit
+Allow: /
