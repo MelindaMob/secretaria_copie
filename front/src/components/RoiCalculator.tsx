@@ -86,7 +86,7 @@ const RoiCalculator = () => {
                   <p className="text-sm text-foreground font-semibold">
                     Secretar.IA coûte{" "}
                     <span className="text-secondary">
-                      à partir de 45€ / mois
+                      à partir de 50€ / mois
                     </span>
                     .
                   </p>

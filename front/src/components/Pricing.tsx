@@ -23,7 +23,7 @@ const Pricing = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Une seule offre tout compris,{" "}
             <span className="font-semibold text-foreground">
-              à partir de 45€ / mois
+              à partir de 50€ / mois
             </span>{" "}
             pour ne plus perdre de réservations.
           </p>
@@ -46,7 +46,7 @@ const Pricing = () => {
                 </h3>
                 <div className="flex items-baseline gap-2">
                   <span className="text-4xl md:text-5xl font-extrabold bg-gradient-accent bg-clip-text text-transparent">
-                    à partir de 45€
+                    à partir de 50€
                   </span>
                   <span className="text-muted-foreground text-lg">/ mois</span>
                 </div>
