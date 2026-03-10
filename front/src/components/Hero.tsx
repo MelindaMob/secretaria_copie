@@ -20,58 +20,84 @@ const Hero = () => {
 
           {/* Main headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight animate-slide-up">
-          Secretar IA <br />
-            <span className="bg-gradient-accent bg-clip-text text-transparent">décroche toutes vos résas.</span>
+            Secretar IA <br />
+            <span className="bg-gradient-accent bg-clip-text text-transparent">
+              décroche toutes vos résas.
+            </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-2xl animate-slide-up">
-            Votre agent IA disponible 24h/24h et 7j/7 pour répondre aux appels, gérer vos réservations et améliorer l'expérience client de votre restaurant
+            Les restaurants perdent en moyenne 8 à 12 appels par service, soit
+            400 à 900€ de réservations perdues par semaine. Secretar.IA répond
+            à votre place 24h/24 et 7j/7.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up">
-            <Button 
-              variant="hero" 
-              size="lg" 
+            <Button
+              variant="hero"
+              size="lg"
               className="text-lg px-8 py-6"
               onClick={() => {
-                const videoSection = document.getElementById('video');
-                if (videoSection) {
-                  videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const demoSection = document.getElementById("demo");
+                if (demoSection) {
+                  demoSection.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
               }}
             >
-              Découvrir la vidéo
+              Tester l'agent par téléphone
             </Button>
-            <Button 
-              variant="heroPrimary" 
-              size="lg" 
+            <Button
+              variant="heroPrimary"
+              size="lg"
               className="text-lg px-8 py-6"
               onClick={() => {
-                const formulaireSection = document.getElementById('formulaire');
-                if (formulaireSection) {
-                  formulaireSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const pricingSection = document.getElementById("tarifs");
+                if (pricingSection) {
+                  pricingSection.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
               }}
             >
-              Commencer
+              Voir les tarifs
             </Button>
           </div>
 
+          {/* Phone demo highlight */}
+          <div className="flex flex-col items-center gap-2 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
+              <Phone className="h-4 w-4 text-accent" />
+              <span className="text-primary-foreground text-sm md:text-base">
+                Démo en direct : appelez{" "}
+                <span className="font-semibold">+33379540862</span>
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = "tel:+33379540862";
+              }}
+              className="text-sm text-primary-foreground/80 underline underline-offset-4 hover:text-primary-foreground transition-colors"
+            >
+              Appeler maintenant
+            </button>
+          </div>
+
           {/* Key features badges */}
-          <div className="flex flex-wrap justify-center gap-4 pt-8 animate-fade-in">
+          <div className="flex flex-wrap justify-center gap-4 pt-6 animate-fade-in">
             <div className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
               <Phone className="h-5 w-5 text-accent" />
-              <span className="text-primary-foreground">Réponse instantanée</span>
+              <span className="text-primary-foreground">Zéro appel manqué</span>
             </div>
             <div className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
               <Calendar className="h-5 w-5 text-accent" />
-              <span className="text-primary-foreground">Gestion automatique</span>
+              <span className="text-primary-foreground">
+                Gestion automatique
+              </span>
             </div>
             <div className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full border border-primary-foreground/20">
               <MessageCircle className="h-5 w-5 text-accent" />
-              <span className="text-primary-foreground">Service 24h/24h et 7j/7</span>
+              <span className="text-primary-foreground">Service 24h/24 et 7j/7</span>
             </div>
           </div>
         </div>

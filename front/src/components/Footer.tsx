@@ -64,6 +64,24 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-3">Liens utiles</h4>
             <div className="space-y-2">
+              <Link 
+                to="/integrations"
+                className="block text-muted-foreground hover:text-accent transition-colors"
+              >
+                Intégrations
+              </Link>
+              <Link 
+                to="/partenaires"
+                className="block text-muted-foreground hover:text-accent transition-colors"
+              >
+                Partenaires
+              </Link>
+              <Link 
+                to="/rgpd"
+                className="block text-muted-foreground hover:text-accent transition-colors"
+              >
+                RGPD
+              </Link>
               <a href="/CGU-SECRETARIA.pdf" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-accent transition-colors">
                 CGV
               </a>

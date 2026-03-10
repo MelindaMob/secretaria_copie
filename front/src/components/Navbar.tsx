@@ -25,6 +25,52 @@ const Navbar = () => {
             </Link>
           </div>
 
+          {/* Liens de navigation - Desktop */}
+          <div className="hidden md:flex items-center gap-6">
+            <Link
+              to="/#demo"
+              className="text-sm text-primary-foreground/80 hover:text-white transition-colors"
+            >
+              Démo
+            </Link>
+            <Link
+              to="/#roi"
+              className="text-sm text-primary-foreground/80 hover:text-white transition-colors"
+            >
+              Calculateur ROI
+            </Link>
+            <Link
+              to="/#tarifs"
+              className="text-sm text-primary-foreground/80 hover:text-white transition-colors"
+            >
+              Tarifs
+            </Link>
+            <Link
+              to="/#faq"
+              className="text-sm text-primary-foreground/80 hover:text-white transition-colors"
+            >
+              FAQ
+            </Link>
+            <Link
+              to="/#formulaire"
+              className="text-sm text-primary-foreground/80 hover:text-white transition-colors"
+            >
+              Contact
+            </Link>
+            <Link
+              to="/integrations"
+              className="text-sm text-primary-foreground/80 hover:text-white transition-colors"
+            >
+              Intégrations
+            </Link>
+            <Link
+              to="/partenaires"
+              className="text-sm text-primary-foreground/80 hover:text-white transition-colors"
+            >
+              Partenaires
+            </Link>
+          </div>
+
           {/* Boutons d'accès - Desktop */}
           <div className="hidden sm:flex items-center gap-3">
             <Link to="/login?type=restaurant">
@@ -63,6 +109,55 @@ const Navbar = () => {
                   <SheetTitle className="text-left">Menu</SheetTitle>
                 </SheetHeader>
                 <div className="mt-8 space-y-4">
+                  <Link
+                    to="/#demo"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left text-sm px-2 py-2 rounded-md hover:bg-muted"
+                  >
+                    Démo téléphonique
+                  </Link>
+                  <Link
+                    to="/#roi"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left text-sm px-2 py-2 rounded-md hover:bg-muted"
+                  >
+                    Calculateur ROI
+                  </Link>
+                  <Link
+                    to="/#tarifs"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left text-sm px-2 py-2 rounded-md hover:bg-muted"
+                  >
+                    Tarifs
+                  </Link>
+                  <Link
+                    to="/#faq"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left text-sm px-2 py-2 rounded-md hover:bg-muted"
+                  >
+                    FAQ
+                  </Link>
+                  <Link
+                    to="/#formulaire"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left text-sm px-2 py-2 rounded-md hover:bg-muted"
+                  >
+                    Contact
+                  </Link>
+                  <Link
+                    to="/integrations"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left text-sm px-2 py-2 rounded-md hover:bg-muted"
+                  >
+                    Intégrations
+                  </Link>
+                  <Link
+                    to="/partenaires"
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left text-sm px-2 py-2 rounded-md hover:bg-muted"
+                  >
+                    Partenaires
+                  </Link>
                   <Link
                     to="/login?type=restaurant"
                     onClick={() => setIsOpen(false)}

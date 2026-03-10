@@ -1,23 +1,21 @@
 const steps = [
   {
     number: "01",
-    title: "Remplissez le formulaire",
-    description: "Indiquez-nous vos informations, horaires d'ouverture, menus et spécificités",
+    title: "Le client appelle votre restaurant",
+    description:
+      "Le numéro habituel de votre établissement est redirigé vers l'agent IA quand personne ne peut décrocher.",
   },
   {
     number: "02",
-    title: "Solution 100% personnalisée",
-    description: "Nous créons votre agent IA sur mesure adapté à votre restaurant",
+    title: "L'IA répond et qualifie la demande",
+    description:
+      "L'agent comprend la demande (réserver, modifier, annuler) et suit vos règles : horaires, capacité, délais, contraintes.",
   },
   {
     number: "03",
-    title: "Intégration clé en main",
-    description: "Nous intégrons la solution à votre système existant en toute simplicité",
-  },
-  {
-    number: "04",
-    title: "Mise en service immédiate",
-    description: "Votre agent IA gère vos appels et réservations dès le premier jour",
+    title: "La réservation est créée automatiquement",
+    description:
+      "La réservation est ajoutée dans Google Agenda, le client reçoit un SMS de confirmation et, si besoin, un rappel pour limiter les no-show.",
   },
 ];
 
@@ -27,10 +25,10 @@ const HowItWorks = () => {
       <div className="container px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Comment ça fonctionne ?
+            Comment ça marche ?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Un processus simple et rapide pour transformer votre gestion des réservations
+            3 étapes simples pour transformer votre gestion des réservations
           </p>
         </div>
 
