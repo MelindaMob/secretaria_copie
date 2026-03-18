@@ -13,7 +13,6 @@ import Pricing from "@/components/Pricing";
 import RoiCalculator from "@/components/RoiCalculator";
 import Testimonials from "@/components/Testimonials";
 import WhyLoss from "@/components/WhyLoss";
-import WhySecretaria from "@/components/WhySecretaria";
 import FAQ from "@/components/FAQ";
 
 const Index = () => {
@@ -49,7 +48,6 @@ const Index = () => {
         <Testimonials />
         <Benefits />
         <HowItWorks />
-        <WhySecretaria />
         <CTA />
         <FAQ />
         <Footer />

@@ -40,10 +40,10 @@ const Benefits = () => {
       <div className="container px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Pourquoi choisir Secretar<span className="text-secondary">.IA</span> ?
+            Les bénéfices de Secretar<span className="text-secondary">.IA</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Une solution complète qui transforme la gestion de vos réservations
+            Les avantages concrets au quotidien pour votre restaurant
           </p>
         </div>
 
