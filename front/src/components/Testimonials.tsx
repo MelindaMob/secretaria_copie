@@ -2,20 +2,20 @@ import { Card } from "@/components/ui/card";
 
 const testimonials = [
   {
-    name: "Le Bistrot des Halles",
+    name: "Bistrot 50",
     location: "Bordeaux",
     quote:
       "Nous avons récupéré 23 réservations le premier mois grâce à l'IA. Et surtout, l'équipe est beaucoup plus sereine pendant le service.",
   },
   {
-    name: "Casa Bella",
-    location: "Lyon",
+    name: "Chez Dupont",
+    location: "Arcachon",
     quote:
       "On ne laisse plus personne tomber sur un téléphone occupé. Les clients sont bluffés par la rapidité.",
   },
   {
-    name: "Brasserie du Parc",
-    location: "Paris",
+    name: "La Petite Marée",
+    location: "Teste-de-Buch",
     quote:
       "L'installation a été faite en quelques jours. On voit très clairement l'impact dans notre carnet de réservations.",
   },
